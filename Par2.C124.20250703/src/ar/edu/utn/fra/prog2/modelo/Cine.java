@@ -12,6 +12,7 @@ public class Cine implements Serializable {
 
     private List<Sala> salas;
     private List<Entrada> entradas;
+    private int entradasVendidas;
 
     public Cine() {
         this.salas = new ArrayList<>();
@@ -33,6 +34,10 @@ public class Cine implements Serializable {
 
     public List<Entrada> getEntradas() {
         return entradas;
+    }
+
+    public int getEntradasVendidas() {
+        return entradasVendidas;
     }
 
     public Sala buscarSalaPorNumero(int numero) {
@@ -58,6 +63,10 @@ public class Cine implements Serializable {
             return true;
         }
         return false;
+    }
+    
+    public void agregarVenta(){
+        entradasVendidas += 1;
     }
 
     @Override

@@ -48,6 +48,7 @@ public class ButacasView extends VBox {
                 } else {
                     butaca.ocupar();
                     PersistenciaCine.guardarCine(cine);
+                    cine.agregarVenta();
                     Alert alerta = new Alert(AlertType.INFORMATION);
                     alerta.setContentText("Compra realizada con exito");
                     alerta.showAndWait();

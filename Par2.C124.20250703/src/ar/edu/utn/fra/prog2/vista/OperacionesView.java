@@ -4,6 +4,7 @@ import ar.edu.utn.fra.prog2.modelo.Cine;
 import ar.edu.utn.fra.prog2.modelo.Cliente;
 import java.util.List;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -18,11 +19,18 @@ public class OperacionesView extends VBox {
     public OperacionesView(Stage stage, List<Cliente> clientes, Cine cine) {
         Label bienvenida = new Label("Bienvenido/a ");
         Button btnSala = new Button("Seleccionar sala");
+        Button btnResumenDeEntradas = new Button("Resumen de entradas compradas");
         Button btnSalir = new Button("Salir");
 
         btnSala.setOnAction(e -> {
             SalaView sala = new SalaView(stage, clientes, cine);
             stage.setScene(new Scene(sala, 300, 300));
+        });
+
+        btnResumenDeEntradas.setOnAction(e -> {
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION,
+                    "Entradas compradas: " + cine.getEntradasVendidas());
+            alerta.showAndWait();
         });
 
         btnSalir.setOnAction(e -> {
@@ -31,6 +39,6 @@ public class OperacionesView extends VBox {
         });
 
         setSpacing(10);
-        getChildren().addAll(bienvenida, btnSala, btnSalir);
+        getChildren().addAll(bienvenida, btnSala, btnResumenDeEntradas, btnSalir);
     }
 }
